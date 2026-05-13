@@ -2,6 +2,8 @@
 
 Fullstack SaaS application for managing contacts and sending broadcast messages.
 
+🇧🇷 [Leia em Português](README.pt-BR.md)
+
 ## 🚀 Tech Stack
 
 * Backend: Node.js, Express
