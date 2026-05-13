@@ -10,7 +10,4 @@ app.use('/users', userRoutes);
 
 app.get('/', (req, res) => res.send('Backend rodando'));
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Servidor iniciado na porta ${PORT}`);
-});
+export default app;
