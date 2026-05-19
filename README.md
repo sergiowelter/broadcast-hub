@@ -22,6 +22,24 @@ broadcast-hub/
 
 ---
 
+## 🧠 Architecture
+
+This project follows software engineering best practices, including:
+
+* SOLID principles
+* Layered architecture
+* Separation of concerns
+* Modular structure
+
+### Backend layers
+
+* **Routes** → define API endpoints
+* **Controllers** → handle HTTP requests/responses
+* **Services** → contain business logic
+* **Repositories** → handle data access
+
+---
+
 ## ⚙️ Getting Started
 
 ### 1. Clone the repository

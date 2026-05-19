@@ -10,4 +10,8 @@ export class UserService {
   async findById(id: string) {
     return userRepository.getById(id);
   }
+
+  async create(data: { name: string; email: string }) {
+    return userRepository.create(data);
+  }
 }

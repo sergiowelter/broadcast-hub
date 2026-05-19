@@ -22,6 +22,24 @@ broadcast-hub/
 
 ---
 
+## 🧠 Arquitetura
+
+Este projeto segue as melhores práticas de engenharia de software, incluindo:
+
+* Princípios SOLID
+* Arquitetura em camadas
+* Separação de responsabilidades
+* Estrutura modular
+
+### Camadas do backend
+
+* **Rotas** → definem os endpoints da API
+* **Controladores** → lidam com requisições e respostas HTTP
+* **Serviços** → contêm a lógica de negócio
+* **Repositórios** → lidam com o acesso a dados
+
+---
+
 ## ⚙️ Começando
 
 ### 1. Clonar o repositório
