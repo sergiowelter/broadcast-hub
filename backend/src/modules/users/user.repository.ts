@@ -27,4 +27,28 @@ export class UserRepository {
 
     return newUser;
   }
+
+  async update(id: string, data: Partial<Omit<User, "id">>) {
+    const index = this.users.findIndex(user => user.id === id);
+
+    if (index === -1) return undefined;
+
+    const updated: User = {
+      ...this.users[index],
+      ...data,
+    };
+
+    this.users[index] = updated;
+
+    return updated;
+  }
+
+  async delete(id: string) {
+    const index = this.users.findIndex(user => user.id === id);
+
+    if (index === -1) return false;
+
+    this.users.splice(index, 1);
+    return true;
+  }
 }

@@ -35,4 +35,42 @@ export class UserController {
 
     return res.status(201).json(user);
   }
+
+  
+  async update(req: Request, res: Response) {
+    const validation = createUserSchema.safeParse(req.body);
+
+    if (!validation.success) {
+      return res.status(400).json({
+        message: "Validation failed",
+        errors: validation.error.flatten().fieldErrors,
+      });
+    }
+
+    const id = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
+
+    const updatedUser = await userService.update(
+      id,
+      validation.data
+    );
+
+    if (!updatedUser) {
+      return res.status(404).json({
+        message: "User not found",
+      });
+    }
+
+    return res.json(updatedUser);
+  }
+
+  async delete(req: Request, res: Response) {
+    const id = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
+    const deleted = await userService.delete(id);
+
+    if (!deleted) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    return res.status(204).send();
+  }
 }
