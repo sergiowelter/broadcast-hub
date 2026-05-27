@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { UserService } from './user.service';
+import { createUserSchema } from "./dtos/create-user.dto";
 
 const userService = new UserService();
 
@@ -21,12 +22,16 @@ export class UserController {
   }
 
   async create(req: Request, res: Response) {
-    const { name, email } = req.body;
+    const validation = createUserSchema.safeParse(req.body);
 
-    const user = await userService.create({
-      name,
-      email,
-    });
+    if (!validation.success) {
+      return res.status(400).json({
+        message: "Validation failed",
+        errors: validation.error.flatten().fieldErrors,
+      });
+    }
+
+    const user = await userService.create(validation.data);
 
     return res.status(201).json(user);
   }
